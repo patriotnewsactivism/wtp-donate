@@ -3,75 +3,484 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Support We The People News</title>
+  <title>Support We The People News - Donate Today</title>
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8fafc;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: #1e293b;
       line-height: 1.6;
+      min-height: 100vh;
     }
+
+    /* Hero Header */
     header {
-      padding: 2rem 1rem;
-      background: linear-gradient(to right, #1e3a8a, #0f172a);
+      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #1e3a8a 0%, #dc2626 100%);
       color: white;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+      opacity: 0.3;
+    }
+
     header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      animation: fadeInDown 1s ease-out;
     }
+
     header p {
-      font-size: 1.2rem;
-      max-width: 600px;
+      font-size: 1.4rem;
+      max-width: 700px;
       margin: 0 auto;
+      position: relative;
+      font-weight: 300;
+      animation: fadeInUp 1s ease-out 0.2s both;
     }
+
+    .tagline {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 0.5rem 1.5rem;
+      border-radius: 50px;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      animation: fadeInUp 1s ease-out 0.4s both;
+      backdrop-filter: blur(10px);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 3rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    /* Donation Grid */
     .donate-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      padding: 2rem 1rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      margin-bottom: 4rem;
     }
+
     .donation-option {
       background: white;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      width: 300px;
-      padding: 1rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      padding: 2.5rem 2rem;
       text-align: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.6s ease-out backwards;
     }
+
+    .donation-option:nth-child(1) { animation-delay: 0.1s; }
+    .donation-option:nth-child(2) { animation-delay: 0.2s; }
+    .donation-option:nth-child(3) { animation-delay: 0.3s; }
+    .donation-option:nth-child(4) { animation-delay: 0.4s; }
+    .donation-option:nth-child(5) { animation-delay: 0.5s; }
+
+    .donation-option::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #1e3a8a, #dc2626);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .donation-option:hover::before {
+      transform: scaleX(1);
+    }
+
+    .donation-option:hover {
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+
+    .donation-option .icon-wrapper {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
+      border-radius: 50%;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .donation-option:hover .icon-wrapper {
+      transform: rotate(5deg) scale(1.1);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
     .donation-option img {
-      max-width: 100px;
-      height: auto;
-      margin-bottom: 1rem;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
     }
+
     .donation-option h3 {
-      font-size: 1.4rem;
+      font-size: 1.8rem;
       color: #1e3a8a;
+      margin-bottom: 1rem;
+      font-weight: 700;
     }
+
     .donation-option p {
-      font-size: 1rem;
-      margin: 0.5rem 0 1rem;
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+      color: #475569;
+      line-height: 1.7;
+      min-height: 60px;
     }
+
     .donation-option a {
       display: inline-block;
-      padding: 0.6rem 1.2rem;
-      background-color: #1e3a8a;
+      padding: 0.9rem 2.5rem;
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
       color: white;
       text-decoration: none;
-      border-radius: 6px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
-    section {
-      padding: 2rem 1rem;
+
+    .donation-option a:hover {
+      background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+      box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+      transform: scale(1.05);
+    }
+
+    /* Video Section */
+    .video-section {
+      background: white;
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: fadeInUp 0.6s ease-out 0.6s backwards;
+    }
+
+    .video-section h2 {
+      font-size: 2.5rem;
       text-align: center;
+      color: #1e3a8a;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
-    footer {
-      background: #1e3a8a;
+
+    .video-section p {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      font-size: 1.2rem;
+      color: #475569;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+    }
+
+    /* Email Section */
+    .email-section {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      border-radius: 20px;
+      padding: 3rem 2rem;
+      margin-bottom: 3rem;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: fadeInUp 0.6s ease-out 0.7s backwards;
+    }
+
+    .email-section h2 {
+      font-size: 2.5rem;
       color: white;
-      padding: 1rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    .email-section p {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .email-form {
+      display: flex;
+      gap: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .email-form input {
+      flex: 1;
+      min-width: 250px;
+      padding: 1rem 1.5rem;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50px;
+      font-size: 1rem;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+    }
+
+    .email-form input::placeholder {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .email-form input:focus {
+      outline: none;
+      border-color: white;
+      background: rgba(255,255,255,0.2);
+    }
+
+    .email-form button {
+      padding: 1rem 2.5rem;
+      background: white;
+      color: #1e3a8a;
+      font-weight: 700;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .email-form button:hover {
+      background: #dc2626;
+      color: white;
+      transform: scale(1.05);
+    }
+
+    .email-note {
+      font-size: 0.9rem;
+      margin-top: 1rem;
+      color: rgba(255,255,255,0.8);
+      font-style: italic;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 20px;
+      padding: 4rem 2rem;
       text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+      animation: fadeInUp 0.6s ease-out 0.8s backwards;
+    }
+
+    .cta-section::before {
+      content: '★';
+      position: absolute;
+      font-size: 15rem;
+      color: rgba(255,255,255,0.03);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .cta-section h2 {
+      font-size: 3rem;
+      color: white;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+      position: relative;
+    }
+
+    .cta-section p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin: 0 auto 2rem;
+      color: rgba(255,255,255,0.9);
+      position: relative;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 1.2rem 3rem;
+      background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+      color: white;
+      font-weight: 700;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+      position: relative;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .cta-button:hover {
+      background: linear-gradient(135deg, #b91c1c 0%, #dc2626 100%);
+      transform: scale(1.1);
+      box-shadow: 0 12px 35px rgba(220, 38, 38, 0.6);
+      animation: none;
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      border-radius: 20px;
+      box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+    }
+
+    footer p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+
+      header p {
+        font-size: 1.2rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .donate-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .donation-option h3 {
+        font-size: 1.5rem;
+      }
+
+      .video-section h2,
+      .email-section h2 {
+        font-size: 2rem;
+      }
+
+      .cta-section h2 {
+        font-size: 2rem;
+      }
+
+      .cta-section p {
+        font-size: 1.1rem;
+      }
+
+      .email-form {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .email-form input,
+      .email-form button {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -80,100 +489,87 @@
 <header>
   <h1>Support the Mission</h1>
   <p>Help fuel the fight for freedom, expose corruption, and support truth-telling journalism with your donation.</p>
+  <div class="tagline">🇺🇸 Fighting for Truth, Justice, and Freedom 🇺🇸</div>
 </header>
 
-<div class="donate-grid">
-  <div class="donation-option">
-    <img src="https://www.wtpnews.org/wp-content/uploads/2025/07/cashapp.avif" alt="Cash App">
-    <h3>Cash App</h3>
-    <p>Search $1Aaudit or scan the QR code to send direct support through Cash App.</p>
-    <a href="https://cash.app/$1Aaudit" target="_blank">Donate</a>
+<div class="container">
+  <h2 class="section-title">Choose Your Donation Method</h2>
+
+  <div class="donate-grid">
+    <div class="donation-option">
+      <div class="icon-wrapper">
+        <img src="CashApp.jpeg" alt="Cash App">
+      </div>
+      <h3>Cash App</h3>
+      <p>Search $1Aaudit or scan the QR code to send direct support through Cash App.</p>
+      <a href="https://cash.app/$1Aaudit" target="_blank">Donate Now</a>
+    </div>
+
+    <div class="donation-option">
+      <div class="icon-wrapper">
+        <img src="Venmo.jpeg" alt="Venmo">
+      </div>
+      <h3>Venmo</h3>
+      <p>Send support via Venmo: @patriotnewsactivism and help power our investigations.</p>
+      <a href="https://venmo.com/patriotnewsactivism" target="_blank">Donate Now</a>
+    </div>
+
+    <div class="donation-option">
+      <div class="icon-wrapper">
+        <img src="GiveSendGo.png" alt="GiveSendGo">
+      </div>
+      <h3>GiveSendGo</h3>
+      <p>Support the legal fund and ongoing transparency work with a one-time or recurring gift.</p>
+      <a href="https://www.givesendgo.com/journalist-fights-for-justice" target="_blank">Donate Now</a>
+    </div>
+
+    <div class="donation-option">
+      <div class="icon-wrapper">
+        <img src="BuyMeaCoffee.png" alt="Buy Me a Coffee">
+      </div>
+      <h3>Buy Me a Coffee</h3>
+      <p>Help cover costs and keep independent reporting going strong with a small tip.</p>
+      <a href="https://buymeacoffee.com/wtpnews" target="_blank">Donate Now</a>
+    </div>
+
+    <div class="donation-option">
+      <div class="icon-wrapper">
+        <img src="GoFundMe.png" alt="GoFundMe">
+      </div>
+      <h3>GoFundMe</h3>
+      <p>Make a direct contribution to our most urgent legal and investigative needs.</p>
+      <a href="https://gofund.me/d7e84db6" target="_blank">Donate Now</a>
+    </div>
   </div>
 
-  <div class="donation-option">
-    <img src="https://www.wtpnews.org/wp-content/uploads/2025/07/venmo.avif" alt="Venmo">
-    <h3>Venmo</h3>
-    <p>Send support via Venmo: @patriotnewsactivism and help power our investigations.</p>
-    <a href="https://venmo.com/patriotnewsactivism" target="_blank">Donate</a>
+  <div class="video-section">
+    <h2>Watch the Mission</h2>
+    <p>Hear directly from the front lines. Watch our call to action for liberty, truth, and accountability.</p>
+    <div class="video-wrapper">
+      <iframe src="https://www.youtube.com/embed/RZMFbAjv_0g" frameborder="0" allowfullscreen></iframe>
+    </div>
   </div>
 
-  <div class="donation-option">
-    <img src="https://www.wtpnews.org/wp-content/uploads/2025/07/givesendgo.avif" alt="GiveSendGo">
-    <h3>GiveSendGo</h3>
-    <p>Support the legal fund and ongoing transparency work with a one-time or recurring gift.</p>
-    <a href="https://www.givesendgo.com/journalist-fights-for-justice" target="_blank">Donate</a>
+  <div class="email-section">
+    <h2>Stay Updated</h2>
+    <p>Join the fight for truth. Enter your email to receive important updates, investigations, and calls to action.</p>
+    <form class="email-form">
+      <input type="email" placeholder="Your Email Address" required />
+      <button type="submit">Subscribe</button>
+    </form>
+    <p class="email-note">(Email feature is currently in development.)</p>
   </div>
 
-  <div class="donation-option">
-    <img src="https://www.wtpnews.org/wp-content/uploads/2025/07/buymeacoffee.avif" alt="Buy Me a Coffee">
-    <h3>Buy Me a Coffee</h3>
-    <p>Help cover costs and keep independent reporting going strong with a small tip.</p>
-    <a href="https://buymeacoffee.com/wtpnews" target="_blank">Donate</a>
+  <div class="cta-section">
+    <h2>This Is Bigger Than One Person</h2>
+    <p>You're not just supporting a journalist — you're fueling a movement. Every donation is a strike against corruption, censorship, and abuse of power.</p>
+    <a href="#" class="cta-button" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Support Now</a>
   </div>
 
-  <div class="donation-option">
-    <img src="https://www.wtpnews.org/wp-content/uploads/2025/07/gofundme.avif" alt="GoFundMe">
-    <h3>GoFundMe</h3>
-    <p>Make a direct contribution to our most urgent legal and investigative needs.</p>
-    <a href="https://gofund.me/d7e84db6" target="_blank">Donate</a>
-  </div>
+  <footer>
+    <p>&copy; 2025 We The People News. All rights reserved.</p>
+  </footer>
 </div>
-
-<section style="background: #f1f5f9;">
-  <h2 style="font-size: 2rem; text-transform: uppercase; color: #1e3a8a;">Watch the Mission</h2>
-  <p style="max-width: 700px; margin: 0 auto 1rem; font-size: 1.1rem;">
-    Hear directly from the front lines. Watch our call to action for liberty, truth, and accountability.
-  </p>
-  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;">
-    <iframe src="https://www.youtube.com/embed/RZMFbAjv_0g" frameborder="0"
-      style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" allowfullscreen>
-    </iframe>
-  </div>
-</section>
-
-<section style="background: #e0e7ff;">
-  <h2 style="font-size: 2rem; color: #1e3a8a;">Stay Updated</h2>
-  <p style="max-width: 600px; margin: 0 auto 1rem; font-size: 1.1rem;">
-    Join the fight for truth. Enter your email to receive important updates, investigations, and calls to action.
-  </p>
-  <form style="margin-top: 1rem;">
-    <input type="email" placeholder="Your Email Address" required
-      style="padding: 0.6rem; width: 250px; max-width: 90%; border: 1px solid #94a3b8; border-radius: 6px;" />
-    <button type="submit"
-      style="padding: 0.6rem 1.2rem; background: #1e3a8a; color: white; font-weight: bold; border: none; border-radius: 6px; margin-left: 0.5rem;">
-      Subscribe
-    </button>
-  </form>
-  <p style="font-size: 0.9rem; margin-top: 0.5rem; color: #334155;">
-    (Email feature is currently in development.)
-  </p>
-</section>
-
-<section style="background: #0f172a; color: white;">
-  <h2 style="font-size: 2rem; margin-bottom: 1rem;">This Is Bigger Than One Person</h2>
-  <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto 1rem;">
-    You're not just supporting a journalist — you're fueling a movement. Every donation is a strike against corruption,
-    censorship, and abuse of power.
-  </p>
-  <a href="#top"
-    style="margin-top: 1rem; display: inline-block; padding: 0.8rem 1.6rem; background: #ef4444; color: white; font-weight: bold; border-radius: 8px; text-decoration: none;">
-    Support Now
-  </a>
-</section>
-
-<footer>
-  <p>&copy; 2025 We The People News. All rights reserved.</p>
-</footer>
-
-<!-- Optional Analytics (uncomment and configure)
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XXXXXXX');
-</script>
--->
 
 </body>
 </html>
