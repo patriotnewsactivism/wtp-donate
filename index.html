@@ -13,145 +13,121 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: #1e293b;
+      background: #f5f5f5;
+      color: #2c3e50;
       line-height: 1.6;
       min-height: 100vh;
     }
 
     /* Hero Header */
     header {
-      padding: 4rem 2rem;
-      background: linear-gradient(135deg, #1e3a8a 0%, #dc2626 100%);
+      padding: 3.5rem 2rem;
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
       color: white;
       text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-      opacity: 0.3;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
     }
 
     header h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;
       margin-bottom: 1rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      position: relative;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-      animation: fadeInDown 1s ease-out;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
 
     header p {
-      font-size: 1.4rem;
+      font-size: 1.25rem;
       max-width: 700px;
       margin: 0 auto;
-      position: relative;
       font-weight: 300;
-      animation: fadeInUp 1s ease-out 0.2s both;
-    }
-
-    .tagline {
-      display: inline-block;
-      background: rgba(255,255,255,0.2);
-      padding: 0.5rem 1.5rem;
-      border-radius: 50px;
-      margin-top: 1.5rem;
-      font-size: 1rem;
-      font-weight: 600;
-      animation: fadeInUp 1s ease-out 0.4s both;
-      backdrop-filter: blur(10px);
+      opacity: 0.95;
     }
 
     /* Main Container */
     .container {
-      max-width: 1400px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 3rem 2rem;
     }
 
-    .section-title {
+    /* Section Headers */
+    .category-header {
       text-align: center;
-      font-size: 2.5rem;
-      color: white;
-      margin-bottom: 3rem;
+      margin: 3rem 0 2.5rem;
+      padding-top: 2rem;
+    }
+
+    .category-header:first-of-type {
+      padding-top: 0;
+    }
+
+    .category-header h2 {
+      font-size: 1.5rem;
+      color: #16a085;
       font-weight: 700;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .category-header h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: #e67e22;
+      border-radius: 2px;
     }
 
     /* Donation Grid */
     .donate-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2.5rem;
-      margin-bottom: 4rem;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .donate-grid.campaigns {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
 
     .donation-option {
       background: white;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      padding: 2.5rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+      padding: 2rem 1.5rem;
       text-align: center;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      position: relative;
-      overflow: hidden;
-      animation: fadeInUp 0.6s ease-out backwards;
-    }
-
-    .donation-option:nth-child(1) { animation-delay: 0.1s; }
-    .donation-option:nth-child(2) { animation-delay: 0.2s; }
-    .donation-option:nth-child(3) { animation-delay: 0.3s; }
-    .donation-option:nth-child(4) { animation-delay: 0.4s; }
-    .donation-option:nth-child(5) { animation-delay: 0.5s; }
-
-    .donation-option::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 6px;
-      background: linear-gradient(90deg, #1e3a8a, #dc2626);
-      transform: scaleX(0);
-      transition: transform 0.4s ease;
-    }
-
-    .donation-option:hover::before {
-      transform: scaleX(1);
+      transition: all 0.3s ease;
+      border: 2px solid transparent;
     }
 
     .donation-option:hover {
-      transform: translateY(-12px) scale(1.02);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      transform: translateY(-8px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      border-color: #16a085;
     }
 
     .donation-option .icon-wrapper {
-      width: 140px;
-      height: 140px;
+      width: 120px;
+      height: 120px;
       margin: 0 auto 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #f0f4ff 0%, #e0e7ff 100%);
-      border-radius: 50%;
-      padding: 1.5rem;
+      background: #f8f9fa;
+      border-radius: 12px;
+      padding: 1.25rem;
       transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
 
     .donation-option:hover .icon-wrapper {
-      transform: rotate(5deg) scale(1.1);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      background: #e8f8f5;
+      transform: scale(1.05);
     }
 
     .donation-option img {
@@ -161,67 +137,62 @@
     }
 
     .donation-option h3 {
-      font-size: 1.8rem;
-      color: #1e3a8a;
+      font-size: 1.5rem;
+      color: #2c3e50;
       margin-bottom: 1rem;
-      font-weight: 700;
+      font-weight: 600;
     }
 
     .donation-option p {
-      font-size: 1.05rem;
+      font-size: 0.95rem;
       margin-bottom: 1.5rem;
-      color: #475569;
-      line-height: 1.7;
-      min-height: 60px;
+      color: #7f8c8d;
+      line-height: 1.6;
+      min-height: 50px;
     }
 
     .donation-option a {
       display: inline-block;
-      padding: 0.9rem 2.5rem;
-      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      padding: 0.75rem 2rem;
+      background: #16a085;
       color: white;
       text-decoration: none;
-      border-radius: 50px;
+      border-radius: 6px;
       font-weight: 600;
-      font-size: 1.1rem;
+      font-size: 1rem;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
     .donation-option a:hover {
-      background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-      box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+      background: #e67e22;
       transform: scale(1.05);
     }
 
     /* Video Section */
     .video-section {
       background: white;
-      border-radius: 20px;
+      border-radius: 12px;
       padding: 3rem 2rem;
-      margin-bottom: 3rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      animation: fadeInUp 0.6s ease-out 0.6s backwards;
+      margin: 4rem 0 3rem;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.08);
     }
 
     .video-section h2 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       text-align: center;
-      color: #1e3a8a;
+      color: #2c3e50;
       margin-bottom: 1rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
     }
 
     .video-section p {
       text-align: center;
       max-width: 700px;
       margin: 0 auto 2rem;
-      font-size: 1.2rem;
-      color: #475569;
+      font-size: 1.1rem;
+      color: #7f8c8d;
     }
 
     .video-wrapper {
@@ -229,8 +200,8 @@
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
 
     .video-wrapper iframe {
@@ -239,22 +210,21 @@
       left: 0;
       width: 100%;
       height: 100%;
-      border-radius: 15px;
+      border-radius: 8px;
     }
 
     /* Email Section */
     .email-section {
-      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-      border-radius: 20px;
+      background: linear-gradient(135deg, #16a085 0%, #1abc9c 100%);
+      border-radius: 12px;
       padding: 3rem 2rem;
       margin-bottom: 3rem;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      animation: fadeInUp 0.6s ease-out 0.7s backwards;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     }
 
     .email-section h2 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: white;
       margin-bottom: 1rem;
       font-weight: 700;
@@ -263,8 +233,8 @@
     .email-section p {
       max-width: 600px;
       margin: 0 auto 2rem;
-      font-size: 1.2rem;
-      color: rgba(255,255,255,0.9);
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.95);
     }
 
     .email-form {
@@ -279,34 +249,33 @@
     .email-form input {
       flex: 1;
       min-width: 250px;
-      padding: 1rem 1.5rem;
-      border: 2px solid rgba(255,255,255,0.3);
-      border-radius: 50px;
+      padding: 0.9rem 1.5rem;
+      border: 2px solid rgba(255,255,255,0.4);
+      border-radius: 6px;
       font-size: 1rem;
-      background: rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.15);
       color: white;
-      backdrop-filter: blur(10px);
       transition: all 0.3s ease;
     }
 
     .email-form input::placeholder {
-      color: rgba(255,255,255,0.7);
+      color: rgba(255,255,255,0.8);
     }
 
     .email-form input:focus {
       outline: none;
       border-color: white;
-      background: rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.25);
     }
 
     .email-form button {
-      padding: 1rem 2.5rem;
+      padding: 0.9rem 2rem;
       background: white;
-      color: #1e3a8a;
+      color: #16a085;
       font-weight: 700;
       border: none;
-      border-radius: 50px;
-      font-size: 1.1rem;
+      border-radius: 6px;
+      font-size: 1rem;
       cursor: pointer;
       transition: all 0.3s ease;
       text-transform: uppercase;
@@ -314,154 +283,105 @@
     }
 
     .email-form button:hover {
-      background: #dc2626;
+      background: #e67e22;
       color: white;
-      transform: scale(1.05);
+      transform: translateY(-2px);
     }
 
     .email-note {
       font-size: 0.9rem;
       margin-top: 1rem;
-      color: rgba(255,255,255,0.8);
+      color: rgba(255,255,255,0.85);
       font-style: italic;
     }
 
     /* CTA Section */
     .cta-section {
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-      border-radius: 20px;
-      padding: 4rem 2rem;
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+      border-radius: 12px;
+      padding: 3.5rem 2rem;
       text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
       margin-bottom: 3rem;
-      position: relative;
-      overflow: hidden;
-      animation: fadeInUp 0.6s ease-out 0.8s backwards;
-    }
-
-    .cta-section::before {
-      content: '★';
-      position: absolute;
-      font-size: 15rem;
-      color: rgba(255,255,255,0.03);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
     }
 
     .cta-section h2 {
-      font-size: 3rem;
+      font-size: 2.5rem;
       color: white;
       margin-bottom: 1.5rem;
-      font-weight: 800;
-      position: relative;
+      font-weight: 700;
     }
 
     .cta-section p {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       max-width: 800px;
       margin: 0 auto 2rem;
-      color: rgba(255,255,255,0.9);
-      position: relative;
+      color: rgba(255,255,255,0.95);
     }
 
     .cta-button {
       display: inline-block;
-      padding: 1.2rem 3rem;
-      background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+      padding: 1rem 2.5rem;
+      background: #e67e22;
       color: white;
       font-weight: 700;
-      border-radius: 50px;
+      border-radius: 6px;
       text-decoration: none;
-      font-size: 1.3rem;
+      font-size: 1.2rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       transition: all 0.3s ease;
-      box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
-      position: relative;
-      animation: pulse 2s ease-in-out infinite;
+      box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
     }
 
     .cta-button:hover {
-      background: linear-gradient(135deg, #b91c1c 0%, #dc2626 100%);
-      transform: scale(1.1);
-      box-shadow: 0 12px 35px rgba(220, 38, 38, 0.6);
-      animation: none;
+      background: #d35400;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 25px rgba(230, 126, 34, 0.5);
     }
 
     /* Footer */
     footer {
-      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      background: #2c3e50;
       color: white;
       padding: 2rem;
       text-align: center;
-      border-radius: 20px;
-      box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+      border-radius: 12px;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
     }
 
     footer p {
-      font-size: 1rem;
+      font-size: 0.95rem;
       opacity: 0.9;
-    }
-
-    /* Animations */
-    @keyframes fadeInDown {
-      from {
-        opacity: 0;
-        transform: translateY(-30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-      }
-      50% {
-        transform: scale(1.05);
-      }
     }
 
     /* Responsive Design */
     @media (max-width: 768px) {
       header h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
       }
 
       header p {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
 
-      .section-title {
-        font-size: 2rem;
+      .category-header h2 {
+        font-size: 1.3rem;
       }
 
-      .donate-grid {
+      .donate-grid,
+      .donate-grid.campaigns {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 1.5rem;
       }
 
       .donation-option h3 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
       }
 
       .video-section h2,
       .email-section h2 {
-        font-size: 2rem;
+        font-size: 1.75rem;
       }
 
       .cta-section h2 {
@@ -474,7 +394,6 @@
 
       .email-form {
         flex-direction: column;
-        gap: 1rem;
       }
 
       .email-form input,
@@ -487,13 +406,16 @@
 <body>
 
 <header>
-  <h1>Support the Mission</h1>
+  <h1>Support We The People News</h1>
   <p>Help fuel the fight for freedom, expose corruption, and support truth-telling journalism with your donation.</p>
-  <div class="tagline">🇺🇸 Fighting for Truth, Justice, and Freedom 🇺🇸</div>
 </header>
 
 <div class="container">
-  <h2 class="section-title">Choose Your Donation Method</h2>
+
+  <!-- Quick Donation Methods Section -->
+  <div class="category-header">
+    <h2>Quick, Instant Donation Methods</h2>
+  </div>
 
   <div class="donate-grid">
     <div class="donation-option">
@@ -516,20 +438,27 @@
 
     <div class="donation-option">
       <div class="icon-wrapper">
-        <img src="GiveSendGo.png" alt="GiveSendGo">
-      </div>
-      <h3>GiveSendGo</h3>
-      <p>Support the legal fund and ongoing transparency work with a one-time or recurring gift.</p>
-      <a href="https://www.givesendgo.com/journalist-fights-for-justice" target="_blank">Donate Now</a>
-    </div>
-
-    <div class="donation-option">
-      <div class="icon-wrapper">
         <img src="BuyMeaCoffee.png" alt="Buy Me a Coffee">
       </div>
       <h3>Buy Me a Coffee</h3>
       <p>Help cover costs and keep independent reporting going strong with a small tip.</p>
       <a href="https://buymeacoffee.com/wtpnews" target="_blank">Donate Now</a>
+    </div>
+  </div>
+
+  <!-- Donation Campaigns Section -->
+  <div class="category-header">
+    <h2>Donation Campaigns</h2>
+  </div>
+
+  <div class="donate-grid campaigns">
+    <div class="donation-option">
+      <div class="icon-wrapper">
+        <img src="GiveSendGo.png" alt="GiveSendGo">
+      </div>
+      <h3>GiveSendGo</h3>
+      <p>Support the legal fund and ongoing transparency work with a one-time or recurring gift.</p>
+      <a href="https://www.givesendgo.com/journalist-fights-for-justice" target="_blank">Donate Now</a>
     </div>
 
     <div class="donation-option">
